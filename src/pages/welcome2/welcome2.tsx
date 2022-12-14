@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import p from '../../asset/存钱罐.svg'
+import p from '../../asset/闹钟.svg'
 
-const Welcome1Styled = styled.div`
+const Welcome2Styled = styled.div`
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -12,8 +12,8 @@ const Welcome1Styled = styled.div`
   .wrapper {
     height: 100%;
     width: 90%;
-    border-radius: 8px;
     display: flex;
+    border-radius: 8px;
     flex-direction: column;
     background-color: #fff;
     justify-content: space-around;
@@ -25,17 +25,17 @@ const Welcome1Styled = styled.div`
     }
   }
 `
-export const Welcome1: React.FC = () => {
+export const Welcome2: React.FC = () => {
   return (
-    <Welcome1Styled>
+    <Welcome2Styled>
       <div className='wrapper'>
         <img src={p} alt='' />
         <div className='title'>
-          会挣钱
-          <br /> 还要会省钱
+          每日提醒
+          <br /> 不会遗漏每一笔账单
         </div>
-        <NavLink to={'/welcome/2'}>下一页</NavLink>
+        <NavLink to={'/welcome/3'}>下一页</NavLink>
       </div>
-    </Welcome1Styled>
+    </Welcome2Styled>
   )
 }

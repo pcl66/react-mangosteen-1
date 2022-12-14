@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import p from '../../asset/存钱罐.svg'
+import p from '../../asset/图表.svg'
 
-const Welcome1Styled = styled.div`
+const Welcome3Styled = styled.div`
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -25,17 +25,17 @@ const Welcome1Styled = styled.div`
     }
   }
 `
-export const Welcome1: React.FC = () => {
+export const Welcome3: React.FC = () => {
   return (
-    <Welcome1Styled>
+    <Welcome3Styled>
       <div className='wrapper'>
         <img src={p} alt='' />
         <div className='title'>
-          会挣钱
-          <br /> 还要会省钱
+          数据可视化
+          <br /> 收支一目了然
         </div>
-        <NavLink to={'/welcome/2'}>下一页</NavLink>
+        <NavLink to={'/welcome/4'}>下一页</NavLink>
       </div>
-    </Welcome1Styled>
+    </Welcome3Styled>
   )
 }

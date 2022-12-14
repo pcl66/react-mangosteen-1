@@ -11,14 +11,17 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@react-spring/web": "^9.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2"
+    "react-router-dom": "^6.4.2",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.1.0",
     "eslint": "^8.29.0",
     "typescript": "^4.6.4",
