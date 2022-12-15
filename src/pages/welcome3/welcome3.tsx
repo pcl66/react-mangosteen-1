@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import p from '../../asset/图表.svg'
 
@@ -26,6 +26,7 @@ const Welcome3Styled = styled.div`
   }
 `
 export const Welcome3: React.FC = () => {
+  const nav = useNavigate()
   return (
     <Welcome3Styled>
       <div className='wrapper'>
@@ -34,7 +35,7 @@ export const Welcome3: React.FC = () => {
           数据可视化
           <br /> 收支一目了然
         </div>
-        <NavLink to={'/welcome/4'}>下一页</NavLink>
+        <NavLink onTouchStart={() => { nav('/welcome/4') }} to={'/welcome/4'}>下一页</NavLink>
       </div>
     </Welcome3Styled>
   )

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import p from '../../asset/闹钟.svg'
 
@@ -26,6 +26,7 @@ const Welcome2Styled = styled.div`
   }
 `
 export const Welcome2: React.FC = () => {
+  const nav = useNavigate()
   return (
     <Welcome2Styled>
       <div className='wrapper'>
@@ -34,7 +35,7 @@ export const Welcome2: React.FC = () => {
           每日提醒
           <br /> 不会遗漏每一笔账单
         </div>
-        <NavLink to={'/welcome/3'}>下一页</NavLink>
+        <NavLink onTouchStart={() => { nav('/welcome/3') }} to={'/welcome/3'}>下一页</NavLink>
       </div>
     </Welcome2Styled>
   )

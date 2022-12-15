@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import p from '../../asset/云.svg'
 
@@ -26,6 +26,7 @@ const Welcome4Styled = styled.div`
   }
 `
 export const Welcome4: React.FC = () => {
+  const nav = useNavigate()
   return (
     <Welcome4Styled>
       <div className='wrapper'>
@@ -34,7 +35,7 @@ export const Welcome4: React.FC = () => {
         云备份
           <br /> 再也不怕数据丢失
         </div>
-        <NavLink to={'/welcome/5'}>下一页</NavLink>
+        <NavLink onTouchStart={() => { nav('/welcome/xxx') }} to={'/welcome/5'}>下一页</NavLink>
       </div>
     </Welcome4Styled>
   )

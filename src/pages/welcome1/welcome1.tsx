@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { useRef } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import p from '../../asset/存钱罐.svg'
 
@@ -26,15 +27,17 @@ const Welcome1Styled = styled.div`
   }
 `
 export const Welcome1: React.FC = () => {
+  const Welcome1StyledRef = useRef<HTMLDivElement | null>(null)
+  const nav = useNavigate()
   return (
-    <Welcome1Styled>
+    <Welcome1Styled ref={Welcome1StyledRef}>
       <div className='wrapper'>
         <img src={p} alt='' />
         <div className='title'>
           会挣钱
           <br /> 还要会省钱
         </div>
-        <NavLink to={'/welcome/2'}>下一页</NavLink>
+        <NavLink onTouchStart={() => { nav('/welcome/2') }} to={'/welcome/2'}>下一页</NavLink>
       </div>
     </Welcome1Styled>
   )
