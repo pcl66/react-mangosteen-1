@@ -2,9 +2,10 @@ import { animated, useTransition } from '@react-spring/web'
 import type { ReactNode } from 'react'
 import { useEffect, useRef } from 'react'
 
-import { useLocation, useNavigate, useOutlet } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate, useOutlet } from 'react-router-dom'
 import styled from 'styled-components'
 import { useSwipe } from '../hooks/useSwipe'
+import { useLocalStore } from '../store/useLocalStore'
 import Logo from './img/山竹.svg'
 
 const WelcomeLayoutStyled = styled.div`
@@ -48,7 +49,7 @@ const linkMap: Record<string, string> = {
   '/welcome/1': '/welcome/2',
   '/welcome/2': '/welcome/3',
   '/welcome/3': '/welcome/4',
-  '/welcome/4': '/welcome/xxx',
+  '/welcome/4': '/welcome/4',
 }
 
 export const WelcomeLayout: React.FC = () => {
@@ -56,6 +57,7 @@ export const WelcomeLayout: React.FC = () => {
   const outlet = useOutlet()
   const pathMap = useRef<Record<string, ReactNode>>({})
   const animating = useRef(false)
+  const { skipped, setSkipped } = useLocalStore()
   pathMap.current[location.pathname] = outlet
   const transitions = useTransition(location.pathname, {
     from: { transform: `${location.pathname === '/welcome/1' ? 'translateX(0%)' : 'translateX(100%)'}` },
@@ -81,9 +83,11 @@ export const WelcomeLayout: React.FC = () => {
     }
   }, [direction, location.pathname])
   const hSkip = () => {
-    nav('/welcome/4')
+    setSkipped(true)
+    nav('/home')
   }
-  return (
+  // eslint-disable-next-line multiline-ternary
+  return !skipped ? (
     <WelcomeLayoutStyled>
       <div className='header'>
         <div className='top-skip'>
@@ -103,5 +107,5 @@ export const WelcomeLayout: React.FC = () => {
         })}
       </div>
     </WelcomeLayoutStyled>
-  )
+  ) : (<Navigate to={'/home'}/>)
 }

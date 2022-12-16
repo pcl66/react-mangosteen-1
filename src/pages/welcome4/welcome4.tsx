@@ -1,6 +1,8 @@
+/* eslint-disable max-statements-per-line */
 import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import p from '../../asset/云.svg'
+import { useLocalStore } from '../../store/useLocalStore'
 
 const Welcome4Styled = styled.div`
   height: 100%;
@@ -27,6 +29,7 @@ const Welcome4Styled = styled.div`
 `
 export const Welcome4: React.FC = () => {
   const nav = useNavigate()
+  const { setSkipped } = useLocalStore()
   return (
     <Welcome4Styled>
       <div className='wrapper'>
@@ -35,7 +38,7 @@ export const Welcome4: React.FC = () => {
         云备份
           <br /> 再也不怕数据丢失
         </div>
-        <NavLink onTouchStart={() => { nav('/welcome/xxx') }} to={'/welcome/5'}>下一页</NavLink>
+        <NavLink onTouchStart={() => { nav('/home'); setSkipped(true) }} to={'/welcome/5'}>开启记账</NavLink>
       </div>
     </Welcome4Styled>
   )
