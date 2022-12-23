@@ -1,8 +1,16 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 export const MainLayout: React.FC = () => {
+  const nav = useNavigate()
+  useEffect(() => {
+    nav('/welcome/1')
+  }, [])
   return (
-    <Outlet />
+  // <div>
+      <Outlet />
+  // </div>
+  // <Navigate to={'/welcome/1'} />
+  // <div>123</div>
   )
 }

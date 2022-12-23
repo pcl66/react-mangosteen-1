@@ -6,6 +6,7 @@ const TimeRangePickerStyled = styled.div`
   .item {
     padding: 8px;
     border-bottom: 3px solid transparent;
+    transition: all .5s;
   }
   .active {
     border-bottom: 2px solid black;

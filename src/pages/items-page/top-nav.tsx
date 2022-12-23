@@ -15,10 +15,14 @@ const TopNavStyled = styled.div`
   }
 `
 
-export const TopNav: React.FC = () => {
+interface P {
+  onClick?: () => void
+}
+
+export const TopNav: React.FC<P> = (props) => {
   return (
     <TopNavStyled>
-      <img className='menu' src={p} alt="" />
+      <img className='menu' src={p} alt="" onClick={props.onClick}/>
       <div className='title'>山竹记账</div>
     </TopNavStyled>
   )
