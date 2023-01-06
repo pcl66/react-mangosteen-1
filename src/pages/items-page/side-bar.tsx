@@ -9,6 +9,7 @@ display: flex;
   background-color: #a9a3a399;
   width: calc(100vw - 200px);
   height: 100vh;
+  opacity: 0;
   transition: all .4s;
 }
 .left-content {
@@ -20,6 +21,7 @@ display: flex;
   left: -200px;
   top: 0;
   transition: all .4s;
+  background-color: #fff;
   .top-bar {
     height: 150px;
     background-color: #5c33be;
@@ -38,6 +40,7 @@ display: flex;
   }
   .mask-visible {
     right: 0;
+    opacity: 1;
   }
   
 `

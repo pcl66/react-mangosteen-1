@@ -29,6 +29,7 @@ const Welcome1Styled = styled.div`
 export const Welcome1: React.FC = () => {
   const Welcome1StyledRef = useRef<HTMLDivElement | null>(null)
   const nav = useNavigate()
+  console.log('渲染了')
   return (
     <Welcome1Styled ref={Welcome1StyledRef}>
       <div className='wrapper'>

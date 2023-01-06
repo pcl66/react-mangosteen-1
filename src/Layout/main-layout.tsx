@@ -6,6 +6,7 @@ export const MainLayout: React.FC = () => {
   useEffect(() => {
     nav('/welcome/1')
   }, [])
+  console.log('main-layout')
   return (
   // <div>
       <Outlet />

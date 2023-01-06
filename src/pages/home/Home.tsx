@@ -1,7 +1,10 @@
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { useRequest } from 'ahooks'
+import { useEffect, useState } from 'react'
 import p from '../../asset/存钱罐.svg'
 import { AddButton } from '../../components/AddButton'
+import { getUserInfo } from '../../api/userInfo'
 
 const HomeStyled = styled.div`
   display: flex;
@@ -42,6 +45,20 @@ export const Home: React.FC = () => {
   const nav = useNavigate()
   const hClick = () => {
     nav('/items')
+  }
+  // const { data, loading } = useRequest(getUserInfo)
+  const [loading, setLoading] = useState<boolean>(true)
+  useEffect(() => {
+    getUserInfo().then(
+      (res) => {
+        console.log(res)
+        setLoading(false)
+      },
+    )
+  }, [])
+  console.log('home')
+  if (loading) {
+    return <div>loading...</div>
   }
   return (
     <HomeStyled>

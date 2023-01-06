@@ -86,6 +86,7 @@ export const WelcomeLayout: React.FC = () => {
     setSkipped(true)
     nav('/home')
   }
+  console.log('WelcomeLayout')
   // eslint-disable-next-line multiline-ternary
   return !skipped ? (
     <WelcomeLayoutStyled>
