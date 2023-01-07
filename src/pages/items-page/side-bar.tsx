@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const SideBarStyled = styled.div`
@@ -50,11 +51,12 @@ interface P {
 }
 
 export const SideBar: React.FC<P> = (p) => {
+  const navigate = useNavigate()
   return (
     <SideBarStyled>
       <div className={`mask ${p.visible ? 'mask-visible' : ''}`} onClick={p.onClickMask}></div>
       <div className={`left-content ${p.visible ? 'left-visible' : ''}`}>
-        <div className='top-bar'>
+        <div className='top-bar' onClick={() => { navigate('/login') }}>
           <div className='title'>未登录用户</div>
           <div className='sub-title'>点击这里登录</div>
         </div>

@@ -6,7 +6,7 @@ import { MainLayout } from '../Layout/main-layout'
 import { WelcomeLayout } from '../Layout/welcome-layout'
 import { Home } from '../pages/home/Home'
 import { ItemsPage } from '../pages/items-page/items-page'
-import { Login } from '../pages/login/Login'
+import Login from '../pages/login/Login'
 import { welcomeRoutes } from './welcome-routes'
 
 export const router = createBrowserRouter([
