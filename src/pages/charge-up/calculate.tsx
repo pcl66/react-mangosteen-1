@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { DateSelect } from '../../components/DateSelect'
 import { Popup } from '../../components/Popup'
+import * as dayjs from 'dayjs'
 
 const CalculateStyled = styled.div`
   position: fixed;
@@ -91,18 +92,29 @@ const CalculateStyled = styled.div`
 `
 export const Calculate: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(true)
+  const [date, setDate] = useState<Date>(new Date())
+  const [trigger, setTrigger] = useState<number>(0)
   const hClickDate = () => {
     console.log('点击了日期')
     setVisible(last => !last)
+    setTrigger((last) => last + 1)
   }
   const hClickMask = () => {
     console.log('点击了')
     setVisible(false)
   }
+  const hCancel = () => {
+    setVisible(false)
+  }
+  const hConfirm = (time: Date) => {
+    setVisible(false)
+    console.log(time)
+    setDate(time)
+  }
   return (
     <CalculateStyled id='charge-up-calculate'>
       <div className='cal-top'>
-        <div className='cal-time' onClick={hClickDate}>2020-02-02</div>
+        <div className='cal-time' onClick={hClickDate}>{dayjs(date).format('YYYY-MM-DD')}</div>
         <div className='cal-balance'>1231423</div>
       </div>
       <div className='parent'>
@@ -121,7 +133,7 @@ export const Calculate: React.FC = () => {
         <div className='div13'>确认</div>
       </div>
       <Popup visible={visible} onMaskClick={hClickMask} >
-        <DateSelect />
+        <DateSelect trigger={trigger} date={date} onCancel={hCancel} onConfirm={hConfirm}/>
       </Popup>
     </CalculateStyled>
   )
