@@ -24,7 +24,7 @@ export const TopBar: React.FC<P> = (p) => {
   }
   return (
     <TopBarStyled>
-      <div className='back' onClick={onClickBack}>{'-<'}</div>
+      <div className='back' onClick={onClickBack}>{'<'}</div>
       <div className='title'>{p.title}</div>
     </TopBarStyled>
   )

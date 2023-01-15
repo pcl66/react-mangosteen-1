@@ -54,7 +54,11 @@ export const Home: React.FC = () => {
         console.log(res)
         setLoading(false)
       },
-    )
+    ).catch((err) => {
+      if (err.response.status === 401) {
+        nav('/login')
+      }
+    })
   }, [])
   console.log('home')
   if (loading) {
