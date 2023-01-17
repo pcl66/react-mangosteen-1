@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 import styled from 'styled-components'
 import { DateSelect } from '../../components/DateSelect'
 import { Popup } from '../../components/Popup'
 import * as dayjs from 'dayjs'
+import { message } from 'antd'
 
 const CalculateStyled = styled.div`
   position: fixed;
@@ -91,9 +92,10 @@ const CalculateStyled = styled.div`
   }
 `
 export const Calculate: React.FC = () => {
-  const [visible, setVisible] = useState<boolean>(true)
+  const [visible, setVisible] = useState<boolean>(false)
   const [date, setDate] = useState<Date>(new Date())
   const [trigger, setTrigger] = useState<number>(0)
+  const [num, setNum] = useState<string>('0')
   const hClickDate = () => {
     console.log('点击了日期')
     setVisible(last => !last)
@@ -111,13 +113,38 @@ export const Calculate: React.FC = () => {
     console.log(time)
     setDate(time)
   }
+  const hClickButton = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const oDom = e.target as HTMLDivElement
+    if(num.split('.')[0].length >= 10) {
+      message.warning('最多十位数！')
+      return
+    }
+    if(oDom.innerHTML === '清除') {
+      setNum('0')
+      return
+    }
+    if(num.includes('.') && oDom.innerHTML === '.') {
+      return
+    }
+    if(num === '0' && oDom.innerHTML === '.') {
+      setNum('0.')
+      return
+    }
+    if(num === '0') {
+      setNum((e.target as HTMLDivElement).innerHTML)
+      return
+    }
+    if(num !== '0') {
+      setNum(last => last + (e.target as HTMLDivElement).innerHTML)
+    }
+  }
   return (
     <CalculateStyled id='charge-up-calculate'>
       <div className='cal-top'>
         <div className='cal-time' onClick={hClickDate}>{dayjs(date).format('YYYY-MM-DD')}</div>
-        <div className='cal-balance'>1231423</div>
+        <div className='cal-balance'>{num}</div>
       </div>
-      <div className='parent'>
+      <div className='parent' onClick={hClickButton}>
         <div className='div1'>1</div>
         <div className='div2'>2</div>
         <div className='div3'>3</div>
