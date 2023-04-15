@@ -7,6 +7,7 @@ import { WelcomeLayout } from '../Layout/welcome-layout'
 import { ChargeUp } from '../pages/charge-up'
 import { Playground } from '../pages/charge-up/playground'
 import { Home } from '../pages/home/Home'
+import { ItemsNew } from '../pages/items-new'
 import { ItemsPage } from '../pages/items-page/items-page'
 import Login from '../pages/login/Login'
 import { welcomeRoutes } from './welcome-routes'
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
   {
     path: '/items',
     element: <ItemsPage />,
+  },
+  {
+    path: '/items/new',
+    element: <ItemsNew />
   },
   {
     path: '/login',
